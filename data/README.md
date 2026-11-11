@@ -62,6 +62,13 @@ reported as explicit gaps.
 
 ## Privacy
 
+**The current GitHub repository is public.** A file named
+`avito_79990000001.html` exposes that phone number in the repository file
+listing, even though the backend masks the path in reports. Upload only
+already-public or synthetic exports. For real personal data, use a private
+repository with a connected Render GitHub app, a private object store, or a
+Render Disk instead of a public repo.
+
 Do not upload full passport/СНИЛС/ВУ numbers or other sensitive documents here.
 The parser may read locally provided files, but reports store only masks and
 hashes for those selector types. Prefer minimal, already-public exports.
