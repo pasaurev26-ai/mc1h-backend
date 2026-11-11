@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mc1h-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: MC1H_PD_ENABLED
+        value: "1"
+      - key: MC1H_PHONE_SEARCH
+        value: "1"
+      - key: MC1H_PLAYWRIGHT
+        value: "0"
+      - key: MC1H_DB
+        value: /tmp/mc1h.db
+      - key: MC1H_CACHE_DB
+        value: /tmp/mc1h_cache.db
+      - key: MC1H_OUT
+        value: /tmp/mc1h-out
+      - key: MC1H_LOCAL_DATA
+        value: /app/data
