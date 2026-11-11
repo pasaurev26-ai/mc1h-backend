@@ -18,11 +18,16 @@ RUN apt-get update \
 COPY requirements.txt ./requirements.txt
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# The source tarball contains app/, README.md, docs/ and data/avito_*.html.
-# ADD extracts it into /app automatically.
+# The source tarball contains app/, README.md and docs/.
+# ADD extracts it into /app automatically; data/ is copied separately below.
 ADD mc1h-src.tar.gz /app/
 
-RUN mkdir -p /app/out /app/data /tmp/mc1h-out
+# User-supplied HTML/JSON exports uploaded to data/ in the GitHub repository.
+# .dockerignore excludes only *.db/*.sqlite, so .html/.json files are copied.
+# MC1H_LOCAL_DATA=/app/data is set below and in render.yaml.
+COPY data/ /app/data/
+
+RUN mkdir -p /app/out /tmp/mc1h-out
 
 EXPOSE 10000
 
