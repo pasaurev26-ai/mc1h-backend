@@ -1,5 +1,11 @@
 # Деплой mc1h на Render.com с телефона
 
+> **Статус: задеплоено 2026-11-11.**
+> Рабочий URL: `https://mc1h-backend.onrender.com`
+> Health: `https://mc1h-backend.onrender.com/health` → `{"status":"ok"}`
+> Репозиторий: `https://github.com/pasaurev26-ai/mc1h-backend`
+> Render Dashboard: `https://dashboard.render.com/web/srv-dbptpion74is7392m46g`
+
 ## Что получится
 
 Постоянный HTTPS-адрес вида:
@@ -102,6 +108,21 @@ GitHub нужен только как хранилище кода. Render буд
 Проверка: на главной странице репозитория должны быть видны
 `Dockerfile`, `render.yaml`, `requirements.txt`, `mc1h-src.tar.gz`.
 Файл `DEPLOY_RENDER.md` можно загрузить дополнительно, но он не обязателен.
+
+### Локальные HTML/JSON из `data/`
+
+Их не нужно добавлять в `mc1h-src.tar.gz`. Загрузи файл прямо в папку
+`data/` репозитория:
+
+1. Открой `data/` в GitHub.
+2. **Add file → Upload files**.
+3. Имя должно содержать номер: `data/avito_79990000001.html` или
+   `data/avito_79990000001.json`.
+4. **Commit changes** → Render пересоберёт образ.
+5. `Dockerfile` копирует `data/` в `/app/data`, а `MC1H_LOCAL_DATA=/app/data`
+   уже задан в Render.
+
+Формат JSON и правила именования: `data/README.md`.
 
 Не переименовывай файлы. Особенно важно:
 
