@@ -17,8 +17,8 @@ data/phone_79990000001.json
 data/79990000001.json
 ```
 
-The full number is never written to the graph/provenance: file paths in reports
-are masked as `local://data/avito_*********01.html`.
+The full number from the filename is not written to the graph/provenance:
+file paths in reports are masked as `local://data/avito_*********01.html`.
 
 ## JSON formats
 
